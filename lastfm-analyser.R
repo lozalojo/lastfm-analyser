@@ -513,6 +513,9 @@ optimal.tickmarks<-function(i.min,i.max,i.number.ticks=10,
 # i.slice=500
 
 lastfm.analiser <- function(i.profile.name, i.restart=F, i.api_key, i.slice=500){
+  if (!dir.exists("output")) dir.create("output")
+  if (!dir.exists("processed")) dir.create("processed")
+  if (!dir.exists("temp")) dir.create("temp")
   
   lastfm.data <- import.lastfm.user(i.user=i.profile.name$lastfm.users, i.restart=i.restart) %>%
     import.lastfm.data(i.user=i.profile.name$lastfm.users, i.restart=i.restart, i.api_key=i.api_key, i.slice=i.slice) %>%
